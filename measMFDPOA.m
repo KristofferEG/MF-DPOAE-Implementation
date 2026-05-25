@@ -1,6 +1,3 @@
-
-clear
-
 addpath(genpath('../Research-dependencies/'))
 
 fs=44100;
@@ -30,7 +27,6 @@ maxSweeps=300;
 dpResponse = zeros(sz);
 freqData = zeros(sz);
 dpRespData = zeros(sz);
-noiseFloorData = zeros(sz);
 
 %% Initialize
 t=(0:blockLength-1).'/fs;
@@ -65,6 +61,7 @@ grid
 drawnow
 
 %% Measurement
+timerVal = tic;
 Titan.InitializePressure();
 for nFreqSet=1:size(f2Idx,1)
     f2IdxVec = f2Idx(nFreqSet,:);
@@ -144,9 +141,9 @@ for nFreqSet=1:size(f2Idx,1)
                     noiseFloor(i,nFreqSet)=mean(abs(fftResponse(idxNoiseVec,nFreqSet)));
                 end
                 
+                idxFreqDP(1:numFreqs(nFreqSet),nFreqSet) = idxFreq(:,3);
                 freqData(1:numFreqs(nFreqSet),nFreqSet) = freq(:,3);
                 dpRespData(1:numFreqs(nFreqSet),nFreqSet) = dbspl(dpResponse(1:numFreqs(nFreqSet),nFreqSet));
-                noiseFloorData(1:numFreqs(nFreqSet),nFreqSet) = dbspl(noiseFloor(1:numFreqs(nFreqSet),nFreqSet));
 
                 freqDataVec = reshape(freqData, [], 1);
                 freqDataVec = freqDataVec(freqDataVec~=0);
@@ -179,13 +176,13 @@ for nFreqSet=1:size(f2Idx,1)
         nBlock=nBlock+1;
     end
 end
+measurementTime = toc(timerVal);
 Titan.StopLogging();
 Titan.StopInstrument();
 
 %% Save
 timestamp=datetime('now');
-save(['Measurement/dpoaeMeas' char(datetime(timestamp,'format','yyMMdd_HHmmss'))],...
+save([subject.folderLocation '/' subject.ear '/dpoaeMeas' char(datetime(timestamp,'format','yyMMdd_HHmmss'))],...
     'response','meanResponseFilt','fftResponse','dpResponse','noiseFloor',...
-    'dBSPL','level','fRatio','idxFreq','freq','freqFFT','blockLength',...
-    'micSens','stimulus','fs','ch','bFilter','aFilter','Hfilter','timestamp')
-
+    'dBSPL','level','fRatio','idxFreq','idxFreqDP','freq','freqData','freqFFT','blockLength',...
+    'micSens','measurementTime','stimulus','fs','ch','bFilter','aFilter','Hfilter','timestamp')
