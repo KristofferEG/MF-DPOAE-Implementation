@@ -143,12 +143,12 @@ for nFreqSet=1:size(f2Idx,1)
                 
                 idxFreqDP(1:numFreqs(nFreqSet),nFreqSet) = idxFreq(:,3);
                 freqData(1:numFreqs(nFreqSet),nFreqSet) = freq(:,3);
-                dpRespData(1:numFreqs(nFreqSet),nFreqSet) = dbspl(dpResponse(1:numFreqs(nFreqSet),nFreqSet));
+                dpRespData(1:numFreqs(nFreqSet),nFreqSet) = dpResponse(1:numFreqs(nFreqSet),nFreqSet);
 
                 freqDataVec = reshape(freqData, [], 1);
                 freqDataVec = freqDataVec(freqDataVec~=0);
                 dpRespDataVec = reshape(dpRespData, [], 1);
-                dpRespDataVec = dpRespDataVec(dpRespDataVec~=0);
+                dpRespDataVec = dbspl(dpRespDataVec(dpRespDataVec~=0));
                 nfVec = reshape(noiseFloor, [], 1);
                 nfVec = nfVec(nfVec~=0);
                 nfDataVec = dbspl(nfVec);
