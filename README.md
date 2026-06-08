@@ -1,7 +1,7 @@
 # MF-DPOAE-Implementation
 This is a repository containing code for a Multi Frequency DPOAE implementation for the Interacoustics Titan. 
 
-The files of note are the following:
+## The files of note are the following:
 - **measMFDPOA.m**  
   The main MF–DPOAE code.
 -  **MFDPOAEtestBattery.mlx**  
@@ -15,7 +15,7 @@ The files of note are the following:
 
 The rest of the files are related to the report work performed as part of its development.
 
-The different variations of DPOAE/MF-DPOAE which can be performed using this is:
+## The different variations of DPOAE/MF-DPOAE which can be performed using this is:
 - 6 frequency standard DPOAE
 - 12 frequency standard DPOAE
 - 6 frequency manual minimum octave spacing
