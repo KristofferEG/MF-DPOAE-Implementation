@@ -2,15 +2,15 @@
 This is a repository containing code for a Multi Frequency DPOAE implementation for the Interacoustics Titan. 
 
 The files of note are the following:
-**- measMFDPOA.m** \\
+- **measMFDPOA.m**  
   The main MF–DPOAE code.
-**-  MFDPOAEtestBattery.mlx**
+-  **MFDPOAEtestBattery.mlx**  
   The code used to automate and visualize testing. It also contains the different DPOAE/MF-DPOAE variations at the top, with the current settings in the code.
-**- generateStimulus.m**
+- **generateStimulus.m**  
   The code which generates the stimulus/primary frequencies ( f1, f2).
-**- dp_frequency_test2.mlx**
+- **dp_frequency_test2.mlx**  
   The full frequency pairing algorithm. Protects from overlap with most DPs.
-**- dp_frequency_test2Lax.mlx**
+- **dp_frequency_test2Lax.mlx**  
   The Relaxed frequency pairing algorithm. Protects from overlap with fewer DPs. 
 
 The rest of the files are related to the report work performed as part of its development.
