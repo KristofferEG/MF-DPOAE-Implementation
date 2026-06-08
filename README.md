@@ -2,7 +2,7 @@
 This is a repository containing code for a Multi Frequency DPOAE implementation for the Interacoustics Titan. 
 
 The files of note are the following:
-**- measMFDPOA.m**
+**- measMFDPOA.m** \\
   The main MF–DPOAE code.
 **-  MFDPOAEtestBattery.mlx**
   The code used to automate and visualize testing. It also contains the different DPOAE/MF-DPOAE variations at the top, with the current settings in the code.
